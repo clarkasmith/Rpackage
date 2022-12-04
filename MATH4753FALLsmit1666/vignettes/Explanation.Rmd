@@ -1,0 +1,89 @@
+---
+title: "What the package does"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{What the package does}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MATH4753FALLsmit1666)
+```
+
+
+# Introduction
+This package is a compilation of various packages used in MATH-4753. It includes 7 functions as well as 2 data files.
+
+## The first function
+
+get_mode receives a data set and returns the mode.
+
+```{r}
+getmode(ddt$DDT)
+```
+
+## The second function
+
+mybin runs as many iterations as requested of a binomial trial and returns a plot.
+
+```{r}
+mybin(iter=1000, n=20, p=0.5)
+```
+
+## The third function
+
+myboot2 applies the requested function to a data for iter iterations and creates a confidence interval using a bootstrap method of sampling, given alpha.
+
+```{r}
+myboot2(iter=10000, x=(c(2,3,4,5,4,2,2,6)), fun= "mean", alpha = 0.05)
+```
+
+## The fourth function
+
+mycltu creates random unifrom distributions given the parameters and returns and creates a curve of the sample mean as well as a theoretical normal curve.
+
+```{r}
+mycltu(n=20, iter=1000)
+```
+
+## The fifth function
+
+mymaxlik finds and returns that maximum likelihood of a function.
+
+```{r}
+logbin=function(x,param) log(dbinom(x,prob=param,size=10))
+mymaxlik(x=c(4,6,7,6,5),param=seq(0,1,length=1000),lfun=logbin)
+```
+
+## The sixth function
+
+myncurve returns a plot of the normal distribution given the parameters.
+
+```{r}
+myncurve(mu = 10, sigma = 5, a = 6)
+```
+
+## The first data set
+
+The ddt data set contains data on fish species and the locations, including rivers, the samples were found.
+
+```{r}
+head(ddt)
+```
+
+## The second data set
+
+The fire data set contains data on various fires, including the distance they travelled and the level of damage they caused.
+
+```{r}
+head(fire)
+```
+
